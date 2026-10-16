@@ -1,0 +1,278 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-50: #eef3fa;
+  --color-navy-100: #d9e3f2;
+  --color-navy-700: #0a3d73;
+  --color-navy-800: #01305e;
+  --color-navy-900: #002247;
+  --color-navy-950: #00162f;
+  --color-brand-red: #e11d26;
+  --color-brand-red-dark: #be141c;
+  --color-whatsapp: #25d366;
+
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-poppins);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root {
+  --header-h: 4.5rem;
+}
+@media (min-width: 1024px) {
+  :root {
+    --header-h: 5.5rem;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Anchored sections land just below the sticky header. */
+  scroll-padding-top: var(--header-h);
+}
+
+/* On larger screens, gently settle each section into the viewport. */
+@media (min-width: 1024px) and (min-height: 640px) {
+  html {
+    scroll-snap-type: y proximity;
+  }
+}
+
+body {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+/* ---------- Layout ---------- */
+
+/* Fluid page container: grows with the screen, with a generous cap. */
+@utility container-x {
+  width: 100%;
+  max-width: 1680px;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4.5vw, 5rem);
+}
+
+/* A section that fills exactly the visible area below the header. */
+@utility screen {
+  min-height: calc(100svh - var(--header-h));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: clamp(2.5rem, 6vh, 6rem);
+  scroll-snap-align: start;
+}
+
+/* ---------- Fluid type: scales with both width and height ---------- */
+
+@utility text-display {
+  font-size: clamp(2.6rem, min(6.2vw, 9.5vh), 7rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+@utility text-h2 {
+  font-size: clamp(2rem, min(3.8vw, 6.4vh), 4.5rem);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+}
+@utility text-h3 {
+  font-size: clamp(1.25rem, min(1.6vw, 2.8vh), 2rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+@utility text-lead {
+  font-size: clamp(1.05rem, min(1.25vw, 2.3vh), 1.45rem);
+  line-height: 1.6;
+}
+@utility text-body {
+  font-size: clamp(0.98rem, min(0.95vw, 1.9vh), 1.15rem);
+  line-height: 1.65;
+}
+@utility text-eyebrow {
+  font-size: clamp(0.78rem, 0.8vw, 0.95rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* ---------- Scroll reveal (driven by the Reveal component) ---------- */
+
+.reveal {
+  transition:
+    opacity 1.3s var(--ease-out-expo),
+    transform 1.6s var(--ease-out-expo),
+    filter 1.3s var(--ease-out-expo),
+    clip-path 1.8s var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+.reveal[data-variant="up"] {
+  opacity: 0;
+  transform: translateY(60px);
+}
+.reveal[data-variant="left"] {
+  opacity: 0;
+  transform: translateX(-70px);
+}
+.reveal[data-variant="right"] {
+  opacity: 0;
+  transform: translateX(70px);
+}
+.reveal[data-variant="zoom"] {
+  opacity: 0;
+  transform: scale(0.88);
+}
+.reveal[data-variant="blur"] {
+  opacity: 0;
+  filter: blur(14px);
+  transform: translateY(30px);
+}
+/* Curtain wipe for images. */
+.reveal[data-variant="wipe"] {
+  clip-path: inset(0 0 100% 0);
+}
+.reveal[data-visible="true"] {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  clip-path: inset(0 0 0 0);
+}
+
+/* ---------- Hero load-in ---------- */
+
+.line-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+}
+.line-mask > span {
+  display: inline-block;
+  transform: translateY(110%);
+  animation: line-up 1.4s var(--ease-out-expo) forwards;
+  animation-delay: var(--d, 0s);
+}
+@keyframes line-up {
+  to {
+    transform: none;
+  }
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fade-up 1.4s var(--ease-out-expo) forwards;
+  animation-delay: var(--d, 0s);
+}
+@keyframes fade-up {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Slow zoom on hero slides. */
+@keyframes ken-burns {
+  from {
+    transform: scale(1.02);
+  }
+  to {
+    transform: scale(1.16);
+  }
+}
+.ken-burns {
+  animation: ken-burns 14s ease-out forwards;
+}
+
+@keyframes scroll-cue {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(10px);
+    opacity: 0.4;
+  }
+}
+.scroll-cue {
+  animation: scroll-cue 2.4s ease-in-out infinite;
+}
+
+/* Progress bar used by the services showcase autoplay. */
+@keyframes progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ---------- Scroll-driven effects (progressive enhancement) ---------- */
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .parallax {
+      animation: parallax linear both;
+      animation-timeline: view();
+      animation-range: cover;
+    }
+    @keyframes parallax {
+      from {
+        transform: translateY(-7%) scale(1.14);
+      }
+      to {
+        transform: translateY(7%) scale(1.14);
+      }
+    }
+
+    .scroll-progress {
+      animation: grow-x linear both;
+      animation-timeline: scroll(root);
+    }
+    @keyframes grow-x {
+      from {
+        transform: scaleX(0);
+      }
+      to {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+/* FAQ accordion marker. */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal,
+  .reveal[data-variant] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    clip-path: none;
+    transition: none;
+  }
+  .line-mask > span,
+  .fade-up {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .ken-burns,
+  .scroll-cue {
+    animation: none;
+  }
+  /* Without this animation the services showcase never auto-advances. */
+  .autoplay-bar {
+    animation: none !important;
+  }
+}
