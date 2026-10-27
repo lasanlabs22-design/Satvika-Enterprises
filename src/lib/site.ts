@@ -22,7 +22,27 @@ export const site = {
   geo: { lat: 17.5449181, lng: 78.2963486 },
 } as const;
 
-export const mapsLink = `https://www.google.com/maps?q=${site.geo.lat},${site.geo.lng}`;
+// All offices, from the letterhead. Shown in the footer.
+export const offices = [
+  {
+    label: "Corporate Office",
+    lines: ["6-1-360/2/8, Saifabad", "Khairtabad Back Side", "Hyderabad, Telangana - 500081"],
+  },
+  {
+    label: "Regional Office",
+    lines: ["Plot No. 84 & 85, PS Rao Nagar", "Dammaiguda, Medchal-Malkajgiri", "Hyderabad, Telangana - 500083"],
+  },
+  {
+    label: "Regional Office",
+    lines: ["LIG 496, Khokha Housing Board", "Bhilai, Durg", "Chhattisgarh - 490023"],
+  },
+  {
+    label: "Regional Office",
+    lines: ["5-85/33, Sri Ram Nagar Colony", "Kistareddypet", "Hyderabad, Telangana - 502319"],
+  },
+];
+
+export const mapsLink =`https://www.google.com/maps?q=${site.geo.lat},${site.geo.lng}`;
 export const mapsEmbed = `https://maps.google.com/maps?q=${site.geo.lat},${site.geo.lng}&z=16&output=embed`;
 
 export const fullAddress = `${site.address.line1}, ${site.address.line2}, ${site.address.city} - ${site.address.pincode}`;

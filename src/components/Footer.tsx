@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { formatPhone, fullAddress, navLinks, services, site, telHref } from "@/lib/site";
+import { formatPhone, navLinks, offices, services, site, telHref } from "@/lib/site";
 
 export default function Footer() {
   const heading = "font-display text-eyebrow text-white";
@@ -52,7 +52,24 @@ export default function Footer() {
             <li className="break-all">
               <a href={`mailto:${site.email}`} className="transition-colors hover:text-white">{site.email}</a>
             </li>
-            <li>{fullAddress}</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="border-t border-white/10">
+        <div className="container-x py-10">
+          <h2 className={heading}>Our offices</h2>
+          <ul className="mt-5 grid gap-8 text-body sm:grid-cols-2 lg:grid-cols-4">
+            {offices.map((o) => (
+              <li key={o.lines[0]}>
+                <p className="font-display font-semibold text-white">{o.label}</p>
+                <address className="mt-2 not-italic">
+                  {o.lines.map((line) => (
+                    <span key={line} className="block">{line}</span>
+                  ))}
+                </address>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
