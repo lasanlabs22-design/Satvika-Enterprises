@@ -71,7 +71,7 @@ export default function Hero() {
 
         <div
           id="quote"
-          className="fade-up hidden rounded-sm bg-white px-[clamp(1.5rem,2.2vw,2.75rem)] py-[clamp(1.25rem,3vh,2.5rem)] text-navy-950 shadow-2xl shadow-black/40 lg:block"
+          className="enquiry-card relative hidden rounded-sm bg-white px-[clamp(1.5rem,2.2vw,2.75rem)] py-[clamp(1.25rem,3vh,2.5rem)] text-navy-950 shadow-2xl shadow-black/40 lg:block"
           style={delay(0.8)}
         >
           <p className="font-display text-eyebrow text-brand-red">Quick enquiry</p>
