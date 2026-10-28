@@ -24,7 +24,7 @@ export default function About() {
             <div className="relative h-[calc(20svh-0.4rem)] overflow-hidden lg:h-[calc(clamp(20rem,60vh,46rem)/2-0.6rem)]">
               <Image
                 src="/images/about-team.jpg"
-                alt="Satvika Enterprises site team at a project"
+                alt="Technician applying waterproof coating inside a water tank"
                 fill
                 sizes="(min-width: 1024px) 22vw, 45vw"
                 className="object-cover"
