@@ -13,7 +13,7 @@ export default function About() {
             <div className="relative h-[40svh] overflow-hidden lg:h-[clamp(20rem,60vh,46rem)]">
               <Image
                 src="/images/about-site.jpg"
-                alt="Workers in hard hats on a multi-storey building under construction"
+                alt="Satvika technician applying waterproofing coat along a terrace parapet"
                 fill
                 sizes="(min-width: 1024px) 28vw, 55vw"
                 className="parallax object-cover"
@@ -24,7 +24,7 @@ export default function About() {
             <div className="relative h-[calc(20svh-0.4rem)] overflow-hidden lg:h-[calc(clamp(20rem,60vh,46rem)/2-0.6rem)]">
               <Image
                 src="/images/about-team.jpg"
-                alt="Site crew in hard hats and safety vests"
+                alt="Satvika Enterprises site team at a project"
                 fill
                 sizes="(min-width: 1024px) 22vw, 45vw"
                 className="object-cover"
@@ -35,7 +35,7 @@ export default function About() {
             <div className="relative h-[calc(20svh-0.4rem)] overflow-hidden lg:h-[calc(clamp(20rem,60vh,46rem)/2-0.6rem)]">
               <Image
                 src="/images/about-plans.jpg"
-                alt="Mason mixing mortar on a renovation site"
+                alt="Crew pressure-grouting a damp wall through injection packers"
                 fill
                 sizes="(min-width: 1024px) 22vw, 45vw"
                 className="object-cover"
